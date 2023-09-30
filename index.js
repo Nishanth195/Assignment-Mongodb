@@ -1,7 +1,7 @@
 import { MongoClient,ObjectId } from 'mongodb';
 
 const uri = 'mongodb://localhost:27017/trial'; // Your MongoDB URI
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+const client = new MongoClient(uri, {  });
 
 async function connectToMongoDB() {
   try {
@@ -33,6 +33,7 @@ async function addTestPosts(db) {
       const testPosts = [
         { groupId:new ObjectId("6516eadbb029d404b0c196a4"), createdAt: lastWeek },
         { groupId:new ObjectId("6516d690f084a3a3da0cf28b"), createdAt: lastWeek },
+        { groupId:new ObjectId("6517d51dcbde365d3bfd0b02"), createdAt: lastWeek },
         // Add more test posts with different group IDs and recent timestamps
       ];
   
@@ -59,7 +60,7 @@ async function performCRUDOperations(db) {
   const postsCollection = db.collection('posts');
 
   // Create a new group
-  const newGroup = { name: 'Group C' };
+  const newGroup = { name: 'Group A' };
   await groupsCollection.insertOne(newGroup);
   console.log('Group created:', newGroup);
 
@@ -121,4 +122,5 @@ async function retrieveMostActiveGroups(db) {
   
 
 connectToMongoDB();
+
 
