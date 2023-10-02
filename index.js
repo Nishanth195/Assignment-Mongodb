@@ -1,13 +1,13 @@
 import { MongoClient,ObjectId } from 'mongodb';
 
-const uri = 'mongodb://localhost:27017/trial'; // Your MongoDB URI
+const uri = 'mongodb://localhost:27017/trial'; // MongoDB URI
 const client = new MongoClient(uri, {  });
 
 async function connectToMongoDB() {
   try {
     await client.connect();
     console.log('MongoDB connected successfully');
-    const db = client.db('trial'); // Replace with your actual database name
+    const db = client.db('trial'); // database name
 
     // CRUD operations and aggregation can access the 'db' object here
     await performCRUDOperations(db);
