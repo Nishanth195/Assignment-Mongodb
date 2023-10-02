@@ -1,13 +1,13 @@
 import { MongoClient,ObjectId } from 'mongodb';
 
-const uri = 'mongodb://localhost:27017/trial'; // Your MongoDB URI
+const uri = 'mongodb://localhost:27017/trial'; 
 const client = new MongoClient(uri, {  });
 
 async function connectToMongoDB() {
   try {
     await client.connect();
     console.log('MongoDB connected successfully');
-    const db = client.db('trial'); // Replace with your actual database name
+    const db = client.db('trial'); //database name
 
     // CRUD operations and aggregation can access the 'db' object here
     await performCRUDOperations(db);
@@ -34,7 +34,7 @@ async function addTestPosts(db) {
         { groupId:new ObjectId("6516eadbb029d404b0c196a4"), createdAt: lastWeek },
         { groupId:new ObjectId("6516d690f084a3a3da0cf28b"), createdAt: lastWeek },
         { groupId:new ObjectId("6517d51dcbde365d3bfd0b02"), createdAt: lastWeek },
-        // Add more test posts with different group IDs and recent timestamps
+        //Can Add more test posts with different group IDs and recent timestamps
       ];
   
       await postsCollection.insertMany(testPosts);
@@ -76,7 +76,7 @@ async function retrieveMostActiveGroups(db) {
     const aggregationPipeline = [
       {
         $match: {
-          createdAt: { $gte: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000) } // Filter posts from the last 7 days (adjust the time frame as needed)
+          createdAt: { $gte: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000) } // Filter posts from the last 7 days 
         }
       },
       {
